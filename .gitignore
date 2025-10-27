@@ -31,3 +31,23 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Xcode
+#
+build/
+DerivedData/
+.DS_Store
+*.xcuserdatad
+*.xccheckout
+*.xcworkspace
+
+# Swift
+.swiftpm/
+.build/
+
+# Cocoapods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/
