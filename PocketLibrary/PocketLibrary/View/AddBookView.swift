@@ -57,11 +57,6 @@ struct AddBookView: View {
                 }
             }
             .navigationTitle("Add New Book")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
-                }
-            }
             // 11. Handles validation errors per the rubric
             .alert("Missing Information", isPresented: $showingValidationError) {
                 Button("OK") {}
