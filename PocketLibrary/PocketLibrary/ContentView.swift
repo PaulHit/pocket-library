@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  PocketLibrary
-//
-//  Created by Paul Hiticas on 27.10.2025.
-//
-
 import SwiftUI
 
 struct ContentView: View {

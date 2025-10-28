@@ -6,13 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		DAAC0AF72EB010D500BD6174 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = DAAC0AF62EB010D100BD6174 /* README.md */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		DAAC0AE82EB0106D00BD6174 /* PocketLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAAC0AF62EB010D100BD6174 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -37,7 +32,6 @@
 		DAAC0ADF2EB0106D00BD6174 = {
 			isa = PBXGroup;
 			children = (
-				DAAC0AF62EB010D100BD6174 /* README.md */,
 				DAAC0AEA2EB0106D00BD6174 /* PocketLibrary */,
 				DAAC0AE92EB0106D00BD6174 /* Products */,
 			);
@@ -125,7 +119,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAAC0AF72EB010D500BD6174 /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
