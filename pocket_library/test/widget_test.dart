@@ -1,30 +1,27 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:provider/provider.dart';
 
+// We use 'pocket_library' because that is the package name in your current file.
 import 'package:pocket_library/main.dart';
+import 'package:pocket_library/providers/library_provider.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('App loads and shows library title', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    // We must wrap the app in the Provider, just like in main.dart,
+    // otherwise the Consumer in BookListScreen will throw an error.
+    await tester.pumpWidget(
+      ChangeNotifierProvider(
+        create: (context) => LibraryProvider(),
+        child: const PocketLibraryApp(),
+      ),
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that the app starts on the 'My Library' screen
+    expect(find.text('My Library'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Check that we have a FloatingActionButton (the + button)
+    expect(find.byIcon(Icons.add), findsOneWidget);
   });
 }
