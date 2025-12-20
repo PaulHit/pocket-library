@@ -1,41 +1,39 @@
 import SwiftUI
+import SwiftData
 
 struct BookListView: View {
-    // 1. Get the shared ViewModel from the environment.
-    @EnvironmentObject var viewModel: LibraryViewModel
-    
-    // 2. State to manage the filter selection from your mockup.
-    @State private var selectedStatus: Book.Status? = nil
-    
-    // 3. Computed property to filter the book list.
-    private var filteredBooks: [Book] {
+	// @Query automatically fetches books from the DB and watches for changes
+	@Query(sort: \Book.title) private var books: [Book]
+	
+	// we need the 'Context' to delete things
+	@Environment(\.modelContext) private var context
+	
+	@State private var selectedStatus: Book.Status? = nil
+	
+	private var filteredBooks: [Book] {
         if let selectedStatus {
-            return viewModel.books.filter { $0.status == selectedStatus }
+            return books.filter { $0.status == selectedStatus }
         } else {
-            return viewModel.books // Show all
+            return books
         }
     }
 
     var body: some View {
-        // 4. NavigationStack is essential for navigation.
         NavigationStack {
             VStack {
-                // 5. Filter Picker (from your mockup)
                 FilterPicker(selectedStatus: $selectedStatus)
 
-                // 6. The "Read" operation list.
-                // This List efficiently updates only the rows that change,
-                // satisfying the "no rebuild of the list/adapter" requirement.
-                List(filteredBooks) { book in
-                    // 7. NavigationLink to the Update/Delete screen.
-                    NavigationLink(destination: BookDetailView(book: book)) {
-                        BookRow(book: book)
-                    }
-                }
+				List {
+					ForEach(filteredBooks) {
+						book in
+						NavigationLink(destination: BookDetailView(book: book)) {
+							BookRow(book: book)
+						}
+					}
+				}
             }
             .navigationTitle("My Library")
             .toolbar {
-                // 8. Toolbar button to navigate to the "Create" screen.
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: AddBookView()) {
                         Image(systemName: "plus")
@@ -77,7 +75,6 @@ struct FilterPicker: View {
     }
 }
 
-// A reusable filter button
 struct FilterButton: View {
     let title: String
     let isSelected: Bool
@@ -96,14 +93,11 @@ struct FilterButton: View {
     }
 }
 
-// A reusable view for each row in the list
 struct BookRow: View {
     let book: Book
     
     var body: some View {
         HStack(spacing: 16) {
-            // Using placeholder images.
-            // In a real app, you'd load this from a URL.
             Image(book.coverImageUrl)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
