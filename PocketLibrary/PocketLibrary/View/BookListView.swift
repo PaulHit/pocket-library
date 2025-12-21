@@ -117,8 +117,3 @@ struct BookRow: View {
     }
 }
 
-// MARK: - Preview
-#Preview {
-    BookListView()
-        .environmentObject(LibraryViewModel())
-}

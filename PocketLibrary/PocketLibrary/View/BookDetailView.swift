@@ -88,10 +88,3 @@ struct BookDetailView: View {
         return true
     }
 }
-
-#Preview {
-    NavigationStack {
-        BookDetailView(book: Book.previewData[0])
-            .environmentObject(LibraryViewModel())
-    }
-}

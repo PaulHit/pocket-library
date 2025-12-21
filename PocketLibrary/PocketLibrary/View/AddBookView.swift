@@ -71,8 +71,3 @@ struct AddBookView: View {
         return true
     }
 }
-
-#Preview {
-    AddBookView()
-        .environmentObject(LibraryViewModel())
-}
