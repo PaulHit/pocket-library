@@ -4,8 +4,6 @@
   track their personal reading journeys. It serves as a digital librarian, allowing users to catalog books they own, are
   currently reading, or wish to read in the future.
 
-  This project was developed as part of the Mobile Applications course at UBB Cluj-Napoca.
-
   ---
 
   🚀 Key Features
