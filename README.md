@@ -62,11 +62,5 @@
 
   ---
 
-  🖼 App Mockups
-  The conceptual design and initial ideas can be found in the idea/ directory, which includes screenshots of the
-  intended list and add/edit screens.
-
-  ---
-
   This project was created for educational purposes to explore mobile application architecture and persistence
   strategies.
